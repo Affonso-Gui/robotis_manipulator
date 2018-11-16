@@ -1017,6 +1017,12 @@ std::vector<WayPoint> RobotisManipulator::trajectoryControllerLoop(double presen
   return {};
 }
 
+void RobotisManipulator::toolMoveToPresentValue(Name tool_name, double tool_value)
+{
+  tool_value += manipulator_.getToolValue(tool_name);
+  toolMove(tool_name, tool_value);
+}
+
 void RobotisManipulator::toolMove(Name tool_name, double tool_value)
 {
   manipulator_.setToolGoalValue(tool_name, tool_value);
@@ -1026,5 +1032,3 @@ void RobotisManipulator::toolMove(Name tool_name, double tool_value)
         ->sendToolActuatorValue(tool_value / manipulator_.getToolCoefficient(tool_name));
   }
 }
-
-

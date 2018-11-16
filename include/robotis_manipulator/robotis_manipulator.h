@@ -166,6 +166,7 @@ public:
 
   // Additional Functions
   std::vector<WayPoint> trajectoryControllerLoop(double present_time);
+  void toolMoveToPresentValue(Name tool_name, double tool_value);
   void toolMove(Name tool_name, double tool_value);
 
 };
