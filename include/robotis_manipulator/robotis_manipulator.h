@@ -50,6 +50,7 @@ private:
   bool using_platform_;
   bool moving_;
   bool step_moving_;
+  bool enabled_;
 
 private:
   void startMoving();
@@ -144,6 +145,7 @@ public:
   double getTrajectoryMoveTime();
   double getTrajectoryControlTime();
   bool isMoving();
+  bool isEnabled();
 
   //Trajectory Control Fuction
   void jointTrajectoryMoveToPresentValue(std::vector<double> goal_joint_angle, double move_time);

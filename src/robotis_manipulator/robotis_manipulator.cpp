@@ -27,6 +27,7 @@ using namespace ROBOTIS_MANIPULATOR;
 
 RobotisManipulator::RobotisManipulator() :
                                      moving_(false),
+                                     enabled_(false),
                                      using_platform_(false),
                                      step_moving_(false),
                                      trajectory_initialization(false)
@@ -342,6 +343,7 @@ void RobotisManipulator::allActuatorEnable()
       tool_actuator_.at(it_tool_actuator_->first)->enable();
     }
   }
+  enabled_ = true;
   trajectory_initialization = false;
 }
 
@@ -358,6 +360,7 @@ void RobotisManipulator::allActuatorDisable()
       tool_actuator_.at(it_tool_actuator_->first)->disable();
     }
   }
+  enabled_ = false;
 }
 
 ////send
@@ -647,6 +650,11 @@ double RobotisManipulator::getTrajectoryControlTime()
 bool RobotisManipulator::isMoving()
 {
   return moving_;
+}
+
+bool RobotisManipulator::isEnabled()
+{
+  return enabled_;
 }
 
 
